@@ -1,7 +1,7 @@
 body.white-background,
 .gallery.white-background,
 .section.white-background, .urn-section.white-background {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.611);
   transition: background-color 0.5s ease;
 }
 
