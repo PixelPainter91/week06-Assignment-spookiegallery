@@ -7,7 +7,7 @@ import moveLeft from "/sprites/character/deathmoveright.gif";
 import attackLeft from "/sprites/character/deathweaponattackleft.gif";
 import attackRight from "/sprites/character/deathweaponattackright.gif";
 
-export default function LilDeath() {
+export default function LilDeath({ onAttackUrn }) {
   const [controlEnabled, setControlEnabled] = useState(false);
   const [position, setPosition] = useState({ x: 100, y: 100 });
   const [keysPressed, setKeysPressed] = useState({});
@@ -19,17 +19,33 @@ export default function LilDeath() {
   const moveSpeed = 10;
   const attackDuration = 1300;
 
+
+
+  function isNearUrn(playerPos, urnPos) {
+    return (
+      Math.abs(playerPos.x - urnPos.x) < urnPos.size &&
+      Math.abs(playerPos.y - urnPos.y) < urnPos.size
+    );
+  }
+
   useEffect(() => {
     attackSoundRef.current = new Audio("/audio/lilDeathattacksound.mp3");
     attackSoundRef.current.volume = 0.6;
   }, []);
+    const URN_POSITION = { x: 600, y: 400, size: 200 };
 
   useEffect(() => {
     function handleKeyDown(e) {
       if (!controlEnabled) return;
 
+      setKeysPressed((prev) => ({ ...prev, [e.key]: true }));
+
       if ((e.key === "a" || e.key === "A") && !attacking) {
         setAttacking(true);
+
+        if (isNearUrn(position, URN_POSITION)) {
+          onAttackUrn?.();
+        }
 
         if (attackSoundRef.current) {
           attackSoundRef.current.currentTime = 0;
@@ -38,8 +54,6 @@ export default function LilDeath() {
 
         setTimeout(() => setAttacking(false), attackDuration);
       }
-
-      setKeysPressed((prev) => ({ ...prev, [e.key]: true }));
 
       setPosition((prev) => {
         let { x, y } = prev;
@@ -58,6 +72,7 @@ export default function LilDeath() {
         return { x, y };
       });
     }
+      const URN_POSITION = { x: 600, y: 400, size: 200 };
 
     function handleKeyUp(e) {
       setKeysPressed((prev) => ({ ...prev, [e.key]: false }));
@@ -70,7 +85,7 @@ export default function LilDeath() {
       window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("keyup", handleKeyUp);
     };
-  }, [controlEnabled, attacking]);
+  }, [controlEnabled, attacking, position, onAttackUrn]);
 
   let sprite;
   if (attacking) {
@@ -84,44 +99,39 @@ export default function LilDeath() {
   }
 
   return (
-    <>
-      <div className="dark-overlay" />
-
+    <div
+      className="lildeath-wrapper"
+      style={{
+        position: "fixed",
+        left: position.x,
+        top: position.y,
+        width: "420px",
+        height: "420px",
+        zIndex: 1,
+      }}
+    >
       <div
-        className="lildeath-wrapper"
+        className="flashlight"
         style={{
-          position: "fixed",
           left: position.x,
-          top: position.y,
-          width: "420px",
-          height: "420px",
-          zIndex: 1,
+          top: position.y + 420 / 2,
         }}
-      >
-        <div
-          className="flashlight"
-          style={{
-            left: position.x,
-            top: position.y + 420 / 2,
-          }}
-        />
-
-        <img
-          src={sprite}
-          alt="LilDeath"
-          className="lildeath"
-          onClick={() => setControlEnabled(true)}
-          draggable={false}
-          style={{
-            position: "absolute",
-            left: "0",
-            top: "50%",
-            width: "257.6px",
-            height: "auto",
-            transform: "translate(-50%, -50%)",
-          }}
-        />
-      </div>
-    </>
+      />
+      <img
+        src={sprite}
+        alt="LilDeath"
+        className="lildeath"
+        onClick={() => setControlEnabled(true)}
+        draggable={false}
+        style={{
+          position: "absolute",
+          left: "0",
+          top: "50%",
+          width: "257.6px",
+          height: "auto",
+          transform: "translate(-50%, -50%)",
+        }}
+      />
+    </div>
   );
 }

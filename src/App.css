@@ -1,7 +1,22 @@
-.App {
-    padding: 0rem;
-    margin: 0rem;
+body.white-background,
+.gallery.white-background,
+.section.white-background, .urn-section.white-background {
+  background-color: white;
+  transition: background-color 0.5s ease;
 }
+
+.App {
+  background-color: #131313;
+  transition: background-color 0.5s ease;
+  min-height: 100vh;
+}
+
+/* 
+body.white-background,
+.gallery.white-background,
+.section.white-background {
+  color: black;
+} */
 
 h1 {
     color: #131313;
@@ -17,6 +32,10 @@ p {
     padding: 0;
     margin: 0;
 }
+
+
+
+
 
 @media screen and (max-width: 650px) {
     h1 {
