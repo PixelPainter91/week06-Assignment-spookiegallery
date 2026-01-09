@@ -4,7 +4,7 @@
   background: rgba(0, 0, 0, 0.9);
   pointer-events: none;
   z-index: 1;
-}
+} */
 
 .flashlight {
   position: fixed;
@@ -20,12 +20,13 @@
     rgba(0, 0, 0, 0.126) 70%
   );
   transform: translate(-50%, -50%);
-  z-index: 500;
-} */
+  z-index: 1;
+}
 
 .lildeath {
   position: absolute;
   z-index: 600;
   cursor: pointer;
   user-select: none;
+  z-index: 600;
 }

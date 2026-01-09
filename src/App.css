@@ -4,15 +4,16 @@
 }
 
 h1 {
-    color: white;
+    color: #131313;
     padding: 0;
     margin: 0;
     font-size: 6rem;
+    z-index: 6;
 }
 
 p {
     text-transform: uppercase;
-    color: white;
+    color: #131313;
     padding: 0;
     margin: 0;
 }
@@ -20,5 +21,9 @@ p {
 @media screen and (max-width: 650px) {
     h1 {
         font-size: 4rem;
+        /* color: white; */
     }
+     /* p{
+       color:white; 
+    }  */
 }

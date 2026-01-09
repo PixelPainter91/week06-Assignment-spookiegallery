@@ -9,7 +9,6 @@ function App() {
           <LilDeath/>
             <Section title="LilDeaths Spookie Gallery" />
             <GallerySideScroll />
-            <Section title="End of the gallery" />
         </div>
     );
 }
