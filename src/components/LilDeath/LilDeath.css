@@ -1,0 +1,31 @@
+/* .dark-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.flashlight {
+  position: fixed;
+  left: 40px;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.962) 0%,
+    rgba(255, 255, 255, 0.577) 40%,
+    rgba(0, 0, 0, 0.126) 70%
+  );
+  transform: translate(-50%, -50%);
+  z-index: 500;
+} */
+
+.lildeath {
+  position: absolute;
+  z-index: 600;
+  cursor: pointer;
+  user-select: none;
+}

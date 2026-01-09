@@ -1,0 +1,47 @@
+.gallery {
+  background-color: #131313;
+  padding: 4rem;
+  display: flex;
+  justify-content: center;
+}
+
+.thumbnailGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  width: 100%;
+}
+
+
+.image-container {
+  cursor: pointer;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  transition: transform 0.2s ease;
+}
+
+.image-container img:hover {
+  transform: scale(1.05);
+}
+
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.overlay-image {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 8px;
+}
