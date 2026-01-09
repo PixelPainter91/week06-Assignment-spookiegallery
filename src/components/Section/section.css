@@ -28,3 +28,44 @@
 .arrowIcon {
     padding: 1rem 0 1rem 0;
 }
+.controlskey {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: rgba(131, 131, 131, 0.663);
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  max-width: 250px;
+  font-family: sans-serif;
+  line-height: 1.5;
+  z-index: 1000;
+}
+
+.controlskey h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+  text-align: center;
+  border-bottom: 1px solid #fefefe;
+  padding-bottom: 0.25rem;
+}
+
+.controlskey h3 {
+  margin: 0.5rem 0 0.25rem 0;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.controlskey p {
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+}
+@media screen and (max-width: 650px) {
+  .controlskey {
+    display: none;
+  }
+}
+.controls-audio {
+  width: 100%;
+  margin-top: 0.75rem;
+}

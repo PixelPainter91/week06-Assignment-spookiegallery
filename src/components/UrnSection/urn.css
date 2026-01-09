@@ -1,0 +1,17 @@
+.urn-section {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  background-color: #131313;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.urn-image {
+  width: 14rem;
+  height: auto;
+  margin-bottom: 2rem;
+  user-select: none;
+}

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import "./LilDeath.css";
 
 import idleGif from "/sprites/character/idledeath.gif";
@@ -14,8 +14,15 @@ export default function LilDeath() {
   const [attacking, setAttacking] = useState(false);
   const [direction, setDirection] = useState("right");
 
+  const attackSoundRef = useRef(null);
+
   const moveSpeed = 10;
   const attackDuration = 1300;
+
+  useEffect(() => {
+    attackSoundRef.current = new Audio("/audio/lilDeathattacksound.mp3");
+    attackSoundRef.current.volume = 0.6;
+  }, []);
 
   useEffect(() => {
     function handleKeyDown(e) {
@@ -23,6 +30,12 @@ export default function LilDeath() {
 
       if ((e.key === "a" || e.key === "A") && !attacking) {
         setAttacking(true);
+
+        if (attackSoundRef.current) {
+          attackSoundRef.current.currentTime = 0;
+          attackSoundRef.current.play().catch(() => {});
+        }
+
         setTimeout(() => setAttacking(false), attackDuration);
       }
 
@@ -88,8 +101,8 @@ export default function LilDeath() {
         <div
           className="flashlight"
           style={{
-            left: position.x, 
-            top: position.y + 420 / 2, 
+            left: position.x,
+            top: position.y + 420 / 2,
           }}
         />
 
